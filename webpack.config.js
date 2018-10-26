@@ -1,9 +1,16 @@
+var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
   entry: {
-      utils: './src/utils.js',
-      main: './src/main.js'
+//     'vendors': [
+//        'd3',
+//        'dc',
+//        'crossfilter'
+//     ],
+ //    d3: 'd3',
+     utils: './src/utils.js',
+     main: './src/main.js'
   },
   output: {
     filename: '[name].js',
@@ -17,7 +24,7 @@ module.exports = {
       // JavaScript/JSX Files
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: '/node_modules/',
         use: {
           loader: 'babel-loader',
           options: {
@@ -25,14 +32,13 @@ module.exports = {
           }
         }
       },
-      // CSS Files
+     // CSS Files
       {
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader']
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
+
     ]
   },
-  // Plugins   
-    
 };
 
