@@ -1,16 +1,15 @@
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var path = require('path');
+var buildModeLocalJSONFileMap = require('./buildModeLocalJSONFileMap.js');
 
 module.exports = {
+  mode: 'development',
   entry: {
-//     'vendors': [
-//        'd3',
-//        'dc',
-//        'crossfilter'
-//     ],
- //    d3: 'd3',
-     utils: './src/utils.js',
-     main: './src/main.js'
+    utils: './src/utils.js',
+    main: './src/main.js',
+    render: './src/render.js',
+    stackedBarChartTable: './src/stackedBarChartTable.js'
   },
   output: {
     filename: '[name].js',
@@ -40,5 +39,17 @@ module.exports = {
 
     ]
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 8000,
+    stats: {
+        colors: true,
+        chunks: false
+    }
+  },
+  plugins: [
+      new CopyWebpackPlugin(buildModeLocalJSONFileMap())  
+  ]
 };
 
