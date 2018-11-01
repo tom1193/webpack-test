@@ -3,7 +3,7 @@ var baseConfig = require('./webpack.base.js');
 
 module.exports = Object.assign({}, baseConfig, {
 	mode: 'production',
-	//overwrites output
+	//overwrites baseConfig output
 	output: {
 		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist'),

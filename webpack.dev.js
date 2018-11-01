@@ -1,6 +1,7 @@
 const baseConfig = require('./webpack.base.js');
 var path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const buildModeLocalJSONFileMap = require('./buildModeLocalJSONFileMap.js');
 
 module.exports = Object.assign({}, baseConfig, {
@@ -15,6 +16,10 @@ module.exports = Object.assign({}, baseConfig, {
 		}
 	},
 	plugins: [
-	new CopyWebpackPlugin(buildModeLocalJSONFileMap())  
+		new CopyWebpackPlugin(buildModeLocalJSONFileMap()),
+		new HtmlWebpackPlugin({
+			hash: true,
+			template: 'src/index.html'
+		})
 	]
 });
