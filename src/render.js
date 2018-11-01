@@ -7,6 +7,10 @@ import StackedBarChartTable from './stackedBarChartTable';
 fetch('http://localhost:8000/datasets/bedutilization.json')
 .then(response => response.json())
 .then((data) => {
+    d3.select('#chart')
+      .append('p')
+      .attr('class', 'test')
+      .text(data[0]['header'])
     var colorscalelumerebrands = d3.scaleOrdinal()
       .range(["#465AFB", "#FFC033", "#33CC99", "#FF6666", "#863C12", "#1FD9E0", "#2EA1F5", "#FF9C15", "#8c98fd", "#ffd880", "#80dfbf", "#ffa0a0", "#6b6ba6", "#73e8ec", "#ffa0fa", "#ffc26d", '#7B7D8D', '#9DA0B8', '#D0D2E1', '#485CFB', '#5063FD', '#5669FE']);
     var attributeList = data.reduce(function (attributes, obj) {

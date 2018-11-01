@@ -1,6 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 var dataPath = path.resolve(__dirname, './data');
+
 const buildModeLocalJSONFileMap = () => {
     let modeLocalJSONFileMap = [];
     // if (dataPath) {
